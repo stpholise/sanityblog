@@ -1,0 +1,33 @@
+.hero{ 
+    width: 100%;
+    max-width: 1600px;  
+    max-height:720px;
+    position: relative; 
+    box-shadow: inset 135px 200px 300px 66px rgba(0,0,0,0.49); 
+} 
+
+.hero-bg{
+    max-height:720px;
+    width:100%;
+    max-width:1600px; 
+    object-fit: cover; 
+    object-position: left top ;
+}
+
+.hero .text-content{
+    position:absolute; 
+    text-align:center;
+    top:0; 
+    left:0;
+    right:0;
+    bottom:0;
+    color:#fff;
+    z-index:1; 
+    width: 100%;
+    max-width: 1000px ;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:2rem;
+}

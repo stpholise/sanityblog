@@ -28,6 +28,52 @@ img {
   margin: 10px 0 20px;
 }
 
+
+h1 {
+  font-size:48px;
+  line-height: 64px;
+}
+
+h2{
+  font-size:36px;
+  line-height: 48px;
+}
+
+h3 {
+  font-size: 28px;
+  line-height:36px;
+}
+
+h4 {
+  font-size: 24px;
+  line-height:32px;
+}
+
+h5 {
+  font-size:20px;
+  line-height:28px;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body1 {
+  font-size:16px;
+  line-height:28px;
+}
+
+.body2 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.txt-label {
+  font-size: 14px ;
+  line-height:20px;
+}
+
 @media (min-width: 768px) {
   img.blog__image {
     height: 600px;

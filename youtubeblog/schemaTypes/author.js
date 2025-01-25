@@ -27,6 +27,7 @@ export default defineType({
         hotspot: true,
       },
     }),
+
     defineField({
       name: 'bio',
       title: 'Bio',
@@ -40,6 +41,26 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'facebook',
+      title: 'facebook',
+      type: 'url',
+    }),
+    defineField({
+      name: 'twitter',
+      title: 'twitter',
+      type: 'url',
+    }),
+    defineField({
+      name: 'instagram',
+      title: 'instagram',
+      type: 'url',
+    }),
+    defineField({
+      name: 'linkedin',
+      title: 'linkedin',
+      type: 'url',
+    })
   ],
   preview: {
     select: {

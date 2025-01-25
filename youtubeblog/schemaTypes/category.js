@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name:'icon',
+      title: 'icon',
+      type:'image'
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
