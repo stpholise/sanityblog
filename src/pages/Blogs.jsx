@@ -1,32 +1,31 @@
  
- import { useState, useEffect } from 'react'
- import { Link } from 'react-router-dom'
-//  import client from '../client' 
+ import { useState, useEffect } from 'react' 
+import BlogsFeatured from '../components/blogs/BlogsFeatured'; 
+import Post from '../components/blogs/Post'; 
+import JoinTeam from '../components/JoinTeam';
+import Catagory from '../components/Catagory';
 
 const Blogs = () => {
   const [ posts, setPosts ] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   client 
-  //     .fetch(`*[_type == "post"] {
-  //       title, 
-  //       slug, 
-  //       body,
-  //       mainImage{
-  //         asset->{
-  //           _id,
-  //           url
-  //         },
-  //         alt
-  //       }
-  //     }`)
-  //     .then((data) => setPosts(data))
-  //     .catch(console.error)
-  // }, [])
-  
-  // 71aff592-e332-44bc-af2b-3543d581ac4d
+  const categories = [ {
+    title: 'Business',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, aperiam.'
+},
+{
+    title: 'Business',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, aperiam.'
+},
+{
+    title: 'Business',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, aperiam.'
+},
+{
+    title: 'Business',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, aperiam.'
+},]
  
   useEffect(() => {
     const fetchPosts = async () => {
@@ -46,11 +45,9 @@ const Blogs = () => {
               alt
             }
           }`
-        );
-
+        ); 
         // Parse the response as JSON
-        const data = await response.json();
-
+        const data = await response.json();  
         // Check if the request was successful
         if (response.ok) {
           setPosts(data.result); // Sanity API wraps data in the `result` property
@@ -73,11 +70,45 @@ console.log(error)
  
   return (
     <div>  
+          {
+            posts.length > 0 &&  
+            
+            <BlogsFeatured  post={posts[0]} />
+          }
         <section className="px-5 2xl:max-w-7xl 2xl:mx-auto">
-        <h1 className="font-bold text-4xl mt-5 mb-7 tracking-widest text-center md:text-6xl lg:text-7xl">
-          Blog page
-        </h1> 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+          
+
+          <section className="all-posts">
+            <h1 className='py-5 my-5 text-3xl font-bold'>All posts</h1>
+            <div className='border-b-2 border-gray-200 my-5'></div>
+            <section className="flex flex-col">
+              {
+                posts.length > 0 &&  
+                posts.slice(0,5).map((post) => (
+                  <Post key={post.slug.current} post={post} /> 
+                ))
+                
+              }
+            </section>
+
+          </section>
+
+             <section className="category-section container w-full mx-auto my-10 mb-10"> 
+                <h1 className='capitalize mb-5 font-bold text-4xl text-left'>All category</h1>
+                <div className="category-flex flex  justify-between items-start gap-5">
+                    {
+                        categories.map((category, index) => (
+                            <Catagory key={index} category={category} />
+                        ))
+                    }
+                </div>                
+             </section>
+
+<div className="">
+  <JoinTeam />
+</div>
+          
+        {/* <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {posts.map((post) => (
             <article key={post._id}  className='mt-3 py-3 px-2 rounded-md hover:border hover:border-gray'>
               {
@@ -98,7 +129,7 @@ console.log(error)
               </button>
             </article>
           ))}
-        </div>
+        </div> */}
       </section>
     </div>
   )

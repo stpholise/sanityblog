@@ -33,16 +33,13 @@ const Singlepost = () => {
           setError('Failed to fetch post')
           setIsLoading(false)
         }
-        const data = await response.json() 
-        console.log(typeof data.result)
-        console.log(data.result)
+        const data = await response.json()  
         setPost(data.result)
         setIsLoading(false) 
       }
       catch(error){
         setError(error)
-        setIsLoading(false)
-
+        setIsLoading(false) 
       }
     }
     if(slug) {
