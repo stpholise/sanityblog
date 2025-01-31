@@ -2,7 +2,7 @@
  import BlockContent from '@sanity/block-content-to-react'
  import  { useFetchBySlug } from '../hooks/index'
  import { Link, useParams } from 'react-router-dom'
-
+ import Icon from '../components/Icon'
 const BlogPost = () => {
     const { slug } = useParams() 
     const { post, loading, error }  = useFetchBySlug(slug)
@@ -20,8 +20,8 @@ const BlogPost = () => {
         return new Intl.DateTimeFormat('en-GB', options).format(date);
       };
       
-      const formattedDate = formatDate('2025-01-17T12:21:36.844Z');
-      console.log(formattedDate);
+  
+      if (loading) return  <Icon />
   
   return (
     <div className='p-2'>

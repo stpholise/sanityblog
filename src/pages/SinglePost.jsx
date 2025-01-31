@@ -1,14 +1,15 @@
  import { useState, useEffect } from 'react'
  import { Link,  useParams,   } from 'react-router-dom'
  import BlockContent from '@sanity/block-content-to-react'
-
+import Icon from '../components/Icon'
 const Singlepost = () => {
   const [ post, setPost ] = useState(null)
   const [ isLoading, setIsLoading ] = useState(true)
   const [ error, setError ] = useState(null)  
+  const { slug } = useParams()
+
 
   
-  const { slug } = useParams()
  
   useEffect(() => {
     const fetchPost = async() =>{
@@ -48,7 +49,7 @@ const Singlepost = () => {
     }
   }, [ slug ])
 
-
+  if (isLoading) return  <Icon />
   return (
     <div> 
       {isLoading && <h1>Loading...</h1>}

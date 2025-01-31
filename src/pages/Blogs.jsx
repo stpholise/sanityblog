@@ -4,6 +4,7 @@ import Post from '../components/blogs/Post';
 import JoinTeam from '../components/JoinTeam';
 import Catagory from '../components/Catagory';
 import  { useFetchPosts, useFetchCategories } from '../hooks/index'
+import Icon from '../components/Icon';
 
 const Blogs = () => {
    
@@ -12,10 +13,8 @@ const Blogs = () => {
 
  
  
-
-console.log(loading)
-console.log(error)
- 
+  if (loading) return  <Icon />
+  if (error) return <div> {error} </div>
   return (
     <div>  
           {
