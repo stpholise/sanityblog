@@ -3,11 +3,13 @@
  import Authorcard from '../components/Authorcard'
 import JoinTeam from '../components/JoinTeam'
  import { useFetchAuthors } from '../hooks/index'
+ import Icon from '../components/Icon'
 
 const Aboutus = () => { 
     const { authors, error, loading } = useFetchAuthors()
     
-    if(loading) return <h1>Loading...</h1>
+  
+    if (loading) return  <Icon />
     if(error) return <h1>{error}</h1>
 
   return (

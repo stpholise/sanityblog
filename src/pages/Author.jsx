@@ -1,6 +1,7 @@
 import Post from '../components/blogs/Post' 
 import { useFetchAuthor, useFetchPostsByAuthor } from '../hooks/index'
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
+import Icon from '../components/Icon'
 
 const Author = () => { 
 
@@ -9,7 +10,8 @@ const Author = () => {
     const { posts } = useFetchPostsByAuthor(id)
  
 
-    if(loading) return <h1>Loading...</h1>
+    
+  if (loading) return  <Icon />
     if(error) return <h1>{error}</h1>
   return (
     <div> 

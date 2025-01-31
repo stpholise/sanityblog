@@ -13,6 +13,7 @@ import ArrowLeft from '../assets/icons/arrowleft.svg'
 import ArrowRight from '../assets/icons/arrowright.svg'
 
 import { useFetchCategories, useFetchAuthors} from '../hooks/index'
+import Icon from '../components/Icon'
 
 const Homepage = () => {
  
@@ -21,7 +22,8 @@ const { categories } = useFetchCategories()
     const { authors } = useFetchAuthors() 
 
      
-    if (loading) return <h1>Loading...</h1>
+    if (loading) return  <Icon />
+    
     if (error) return <h1>{error}</h1> 
     if (!posts) return <h1>No posts to display</h1>
   return (

@@ -3,6 +3,7 @@
  import { useFetchSingleCategory, useFetchPostsByCategory, useFetchCategories } from '../hooks/index'
  
  import image from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
+ import Icon from '../components/Icon'
 
 const Categories = () => { 
     const { id } = useParams()
@@ -12,8 +13,10 @@ const Categories = () => {
 
     const { categories } = useFetchCategories()
 
+    
+  if (loading) return  <Icon />
     console.log(id)
-    isLoading && <h1>Loading...</h1>
+ if(isLoading) return <Icon />
     catError && <h1>{catError}</h1> 
     console.log(posts)
 
