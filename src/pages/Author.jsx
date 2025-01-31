@@ -1,16 +1,23 @@
-import Post from '../components/blogs/Post'
-import image from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
+import Post from '../components/blogs/Post' 
+import { useFetchAuthor, useFetchPostsByAuthor } from '../hooks/index'
+import { Link, useParams } from 'react-router-dom'
 
+const Author = () => { 
 
-const Author = () => {
-    const cpost = ['one', 'two']
+    const { id } = useParams() 
+    const { author, loading, error } = useFetchAuthor(id)
+    const { posts } = useFetchPostsByAuthor(id)
+ 
+
+    if(loading) return <h1>Loading...</h1>
+    if(error) return <h1>{error}</h1>
   return (
-    <div>
+    <div> 
         <section className="full bg-[#eee6f6] min-h-[400px]">
-            <div className="container mx-auto border-2 border-red-500 p-20 flex items-center gap-5 ">
-                <img src={image} alt="" className="w-1/4"/>
+            <div className="container mx-auto  p-20 flex items-center gap-5 ">
+                <img src={author.image.asset.url} alt="" className="w-1/4"/>
                 <div className="W-10/12 p-5">
-                    <h2 className="font-bold my-2">Hey there, I’m Andrew Jonhson and welcome to my Blog</h2>
+                    <h2 className="font-bold my-2"> <span className='capitalize'>{author.name} </span>  </h2>
                     <p className="text-gray-500 my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec. Scelerisque viverra mauris in aliquam sem. At risus viverra adipiscing at in tellus.</p>
                 </div>
             </div>
@@ -21,7 +28,7 @@ const Author = () => {
             </h1>
             <div className="">
                 {
-                    cpost.slice(0,).map((post,index) => (
+                    posts.slice(0,).map((post,index) => (
                         <Post key={index} post={post} />
                     ))
                 }

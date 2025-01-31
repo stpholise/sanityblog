@@ -26,6 +26,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required('Author must have an image'),
     }),
 
     defineField({

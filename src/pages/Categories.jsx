@@ -1,49 +1,64 @@
  import Post from '../components/blogs/Post'
-
+ import { useParams, Link } from 'react-router-dom'
+ import { useFetchSingleCategory, useFetchPostsByCategory, useFetchCategories } from '../hooks/index'
+ 
  import image from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
 
-const Categories = () => {
-    const posts = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+const Categories = () => { 
+    const { id } = useParams()
+
+    const { category, loading: isLoading, error:catError } = useFetchSingleCategory(id)
+    const { posts, loading, error } = useFetchPostsByCategory(id)
+
+    const { categories } = useFetchCategories()
+
+    console.log(id)
+    isLoading && <h1>Loading...</h1>
+    catError && <h1>{catError}</h1> 
+    console.log(posts)
+
   return (
     <div>
-        <header className="category-header w-full bg-[#eee6f6] h-[400px] flex items-center justify-center">
-            <div className="container mx-auto max-w-[444px] flex flex-col items-center justify-center gap-3 text-center">
-                <h1 className="text-4xl"> Business</h1>
-                <p className="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris .</p>
+        <header className="category-header w-full bg-[#eee6f6] xl:h-[400px] h-fit flex  items-center justify-center">
+            <div className="container mx-auto max-w-[704px] p-2 w-full flex flex-col items-left md:items-center justify-center gap-3 text-center">
+                <h1 className="xl:text-4xl 2xl:text-4xl sm:text-3xl text-2xl uppercase"> {category.title}</h1>
+                <p className="text-gray-500">{category.description}</p>
 
                 <div className="category-flex flex  justify-center items-start gap-5 w-full px-16 flex-wrap">
-                    <span>BLOG</span>  <span>BUSINESS</span>
+                    <span>BLOG</span>  <span className='capitalize'>{category.title}</span>
                 </div>
             </div>
         </header>
 
-       <section className="container mx-auto justify-start flex my-24 gap-20">
-            <div className="w-11/12">
+       <section className="container mx-auto justify-start flex flex-col md:flex-row my-24 gap-3 sm:gap-8 xl:gap-20">
+            <div className={`w-full  ${posts.length < 1 ? 'w-0' : 'w-10/12'}`}>
                 {
                     posts.map((post, index) => (
-                        <Post key={index} />
+                        <Post key={index} post={post}/>
                     ))
                 }
         
             </div>
-                <div className="w-5/12 p-2">
+                <div className={` p-2 w-full md:w-fit  ${posts.length < 1 ? 'w-full mx-auto md:w-full' : ''}`}>
                     <div className="">
                         {
-                            posts.slice(0,).map(( index) => (
-                                <div key={index} className='flex gap-2 my-5 justify-start items-center border-2 border-gray-300 w-64 py-3 px-5 text-left
-                                hover:bg-yellow-300 transition-color duration-300 cursor-pointer rounded-md
-                                '>
-                                    <img src={image} alt="" className=' w-10 h-10 object-cover border-2 rounded-md' />
-                                    <h3 className='text-purple-600 w-8/12 text-lg text-left font-bold '>STARTUP</h3>
-                                </div>
-                            ))
+                             categories.slice(0,).map((category, index) => (
+                                 <Link key={index} to={`/categories/${category._id}`} >
+                                 <div  className='flex gap-2 my-5 justify-start items-center border-2 border-gray-300 w-full py-3 px-2 text-left
+                                 hover:bg-yellow-300 transition-color duration-300 cursor-pointer rounded-md
+                                 '>
+                                     <img src={image} alt="" className=' w-10 h-10 object-cover border-2 rounded-md' />
+                                    <h3 className='text-purple-600 w-10/12 text-base lg:text-lg text-left font-bold uppercase'>{category.title}</h3>
+                                 </div>
+                                    </Link>
+                              ))
                         }
                     </div>
-                    <div className="">
+                    {/* <div className="">
                         All Tags 
-                        <div className=" flex flex-wrap gap-2 w-full">
+                         <div className=" flex flex-wrap gap-2 w-full">
                             {
-                                posts.slice(0,).map(( index) => (
+                                categories.slice(0,).map(( index) => (
                                     <p key={index} className='flex gap-2  justify-start items-center border-2 border-gray-300 w-fit px-6 py-2 text-left rounded-3xl text-sm font-bold 
                                     hover:bg-yellow-300 transition-color duration-300 cursor-pointer 
                                     '>
@@ -51,8 +66,8 @@ const Categories = () => {
                                     </p>
                                 ))
                             }
-                        </div>
-                    </div>
+                        </div> 
+                    </div> */}
                 </div>
 
        </section>

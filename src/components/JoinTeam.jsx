@@ -2,8 +2,8 @@
 
 const JoinTeam = () => {
   return (
-    <div>  <div className="action container mx-auto my-10 flex flex-col items-center justify-center gap-2 w-[444px] text-center">
-    <h2 className='font-bold'>Join our team to be a part of our story</h2>
+    <div>  <div className="action container mx-auto my-10 flex flex-col items-center justify-center gap-2 lg:xl:2xl:w-[444px] text-center">
+    <h2 className='font-bold text-2xl lg:xl:2xl:text-4xl'>Join our team to be a part of our story</h2>
     <p className='text-sm text-gray-500 leading-snug mb-5 p-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
     <button className=''>
             <Link to='/blogs'

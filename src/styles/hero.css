@@ -14,20 +14,16 @@
     object-position: left top ;
 }
 
-.hero .text-content{
-    position:absolute; 
-    text-align:center;
-    top:0; 
-    left:0;
-    right:0;
-    bottom:0;
-    color:#fff;
-    z-index:1; 
-    width: 100%;
-    max-width: 1000px ;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:center;
-    gap:2rem;
+@media(max-width:768px) {
+    .hero{
+        max-height: 500px;
+    }
+    .hero-bg{
+        max-height: 500px; 
+        width:100%;
+        max-width:1600px; 
+        object-fit: cover; 
+        object-position: center ;
+    }
 }
+ 
