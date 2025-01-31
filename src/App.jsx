@@ -6,13 +6,15 @@ import { Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
 import Homepage from './pages/Homepage'
-import SinglePost from './pages/SinglePost'
+import BlogPost from './pages/BlogPost'
+// import SinglePost from './pages/SinglePost'
 import Blogs from './pages/Blogs'
 import Footer from './components/Footer' 
 import Aboutus from './pages/Aboutus'
 import Categories from './pages/Categories'
 import Author from './pages/Author'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import Error from './pages/Error'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -32,7 +34,7 @@ function App() {
         />
         <Route exact 
           path='/blogs/:slug'
-          element={<SinglePost />}
+          element={<BlogPost />}
         />
         <Route exact 
           path='/about'
@@ -43,17 +45,22 @@ function App() {
           element={<Categories />}
         />
         <Route exact 
-          path='/author'
+          path='/categories/:id'
+          element={<Categories />}
+          />
+        <Route exact 
+          path='/author/:id'
           element={<Author />}
         />
         <Route exact 
           path='/privacypolicy'
           element={<PrivacyPolicy />}
         />
-        {/* <Route exact 
+          <Route exact 
           path='*'
           element={<Error />}
-        />  */}
+        />   
+        
       </Routes>
       <Footer />
       </div>
