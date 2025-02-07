@@ -1,26 +1,31 @@
  
  import { PropTypes } from 'prop-types'
  import { Link } from 'react-router-dom'
+ import EconomyIcon from '/economy.svg'
 
 const Catagory = ({category}) => {
 
   const { title, description, _id } = category
-
-    console.log('omo')
-  return (
  
-      <div className='catagory hover:bg-yellow-200 w-11/12 p-2  lg:xl:2xl:p-4 flex flex-col gap-3 border-2 border-gray-200 lg:xl:2xl:w-1/3
+  return (
+ <>
+    <Link to={`/categories/${_id}`} className='' >  
+      <div className='catagory group hover:bg-[#FFD050] w-full  flex flex-col justify-start items-start gap-2 border-2 border-gray-200 
               transition-colors duration-300 ease-in-out
-              lg:min-h-64 xl:min-h-64 
-              md:w-5/12 md:p-8 md:rounded-xl md:hover:bg-yellow-200 
+                md:p-8 md:rounded md:hover:bg-yellow-200 
+                lg:max-w-[300px] lg:h-[218px] lg:p-8  
+                xl:max-w-[300px] xl:h-[211px]   
       '>
-         <Link to={`/categories/${_id}`} >  
-          {/* <img src="" alt="" /> */}
-          <h2 className='font-bold lg:text-3xl xl:2x:text-4xl text-xl mb-2'>{title}</h2>
-          <p className='text-gray-600'>{description.split(' ').slice(0, 20).join(' ')}{description.split(' ').length > 20 && '...'}</p>
-          </Link>
+        <div className="rounded-md group-hover:bg-white bg-yellow-50 w-12 h-12 flex items-center justify-center">
+          <img src={EconomyIcon} alt=""className=' w-6 m-0' /> 
+        </div>
+          <h2 className='font-bold lg:text-2xl md:text-2xl xl:2xl:text-3xl text-xl   capitalize'>
+            {title}
+            </h2>
+          <p className='text-gray-600 text-sm'>{description.split(' ').slice(0, 9).join(' ')}{description.split(' ').length > 9 && '...'}</p>
       </div>
-  
+    </Link>
+    </>
      
   )
 }

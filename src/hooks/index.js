@@ -65,11 +65,11 @@ export const useFetchPosts = () => {
 
             setLoading(false);
             } else {
-            setError(data.error || 'Failed to fetch posts');
+            setError(data.error.message || 'Failed to fetch posts');
             setLoading(false);
             }
         } catch (err) {
-            setError(`'Error fetching posts': ${err}`);
+            setError(`'Error fetching posts': ${err.message}`);
             setLoading(false);
         }
         };
@@ -388,12 +388,16 @@ export const useFetchSingleCategory = (id) => {
                 }`, settings)
                 if(!response.ok) {
                     setError(response.message)
+                    setLoading(false)
+
                 }
                 const data = await response.json()
                 setCategory(data.result[0])
+                setLoading(false)
             }
             catch(err) {
                 setError(err)
+                setLoading(false)
             }
         }
         if(id) {
@@ -459,15 +463,18 @@ export const useFetchPostsByCategory = (id) => {
   }
 }`, settings)
                 if(!response.ok) {
-                    setError(`${response.status} ${response.message}`)
-                    console.log(response)
-                }
+                    setError(response.message)
+                    console.log(`${response.status} ${response.message}`)
+            setLoading(false)
+        }
                 const data = await response.json()
                 setPosts(data.result)
-            }
+            setLoading(false)
+        }
             catch(err) {
-                setError(err)
-            }
+                setError(err.message)
+            setLoading(false)
+        }
         }
         if(id) {
             getPosts()

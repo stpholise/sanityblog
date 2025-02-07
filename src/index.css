@@ -2,15 +2,22 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+ 
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /* You can add custom styles here */
 
 body {
   margin: 0;
-  font-family: "Tajawal", sans-serif;
+  font-family: "Inter", serif, "Tajawal", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f1f1f1;
+}
+
+p {
+  font-family: "Inter", serif;  
+  font-style: normal;
 }
 
 img {
@@ -30,31 +37,37 @@ img {
 
 
 h1 {
+  font-family: "sen", serif;  
   font-size:48px;
   line-height: 64px;
 }
 
 h2{
+  font-family: "sen", serif;  
   font-size:36px;
   line-height: 48px;
 }
 
 h3 {
+  font-family: "sen", serif;  
   font-size: 28px;
   line-height:36px;
 }
 
 h4 {
+  font-family: "sen", serif;  
   font-size: 24px;
   line-height:32px;
 }
 
 h5 {
+  font-family: "sen", serif;  
   font-size:20px;
   line-height:28px;
 }
 
 h5 {
+  font-family: "sen", serif;  
   font-size: 16px;
   line-height: 24px;
 }
@@ -83,4 +96,81 @@ h5 {
   .block__content p {
     font-size: 18px;
   }
+}
+
+ ul.headerNav li:last-child {
+  background-color:white;
+  color:#232536;
+  padding:8px 38px;
+  font-weight:bold;
+  font-size:18px;
+}
+ 
+
+.blog__content{
+  font-family: "Inter", serif;  
+  font-size: 18px;
+  line-height: 28px;
+  color:#6D6E76;
+}
+
+.blog__content h1 {
+  font-family: "sen", serif;
+  font-weight:bold;
+  font-size: 48px;
+  line-height: 64px;
+  color: #232536;
+}
+
+.blog__content h2 {
+  font-family: "sen", serif;
+  font-weight:bold;
+  font-size: 36px;
+  line-height: 48px;
+  color: #232536;
+}
+
+.blog__content h3 {
+  font-family: "sen", serif;
+  font-size: 28px;
+  font-weight:bold;
+  line-height: 36px;
+  color: #232536;
+}
+
+.blog__content h4 {
+  font-family: "sen", serif;
+  font-size: 24px;
+  font-weight:bold;  
+  line-height: 32px;
+  color: #232536;
+}
+
+.blog__content h5 {
+  font-family: "sen", serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight:bold;
+  color: #232536;
+}
+
+.blog__content li{
+  font-family: "Inter", serif;  
+  font-size: 18px;
+  line-height: 28px;
+  font-weight:bold;
+  color:#161722;
+  list-style:circle;
+  list-style-position:inside;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
 }

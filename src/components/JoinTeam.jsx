@@ -2,13 +2,13 @@
 
 const JoinTeam = () => {
   return (
-    <div>  <div className="action container mx-auto my-10 flex flex-col items-center justify-center gap-2 lg:xl:2xl:w-[444px] text-center">
-    <h2 className='font-bold text-2xl lg:xl:2xl:text-4xl'>Join our team to be a part of our story</h2>
+    <div>  <div className="action container mx-auto h-64 md:max-w-96 flex flex-col max-w-md items-center justify-center gap-2 lg:w-[444px] text-center">
+    <h2 className='font-bold text-2xl lg:text-3xl '>Join our team to be a part of our story</h2>
     <p className='text-sm text-gray-500 leading-snug mb-5 p-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
     <button className=''>
             <Link to='/blogs'
                 className="py-4 px-12 
-                    rounded shadow text-black bg-yellow-400 border-yellow-300 hover:bg-transparent border-2  transition-all duration-500 hover:text-black font-bold" 
+                    rounded shadow text-black bg-[#FFD050] border-[#FFD050] hover:bg-transparent border-2  transition-all duration-500 hover:text-black font-bold" 
             >
                 Join Now
             </Link>

@@ -1,6 +1,7 @@
  
  import { PropTypes } from 'prop-types'
  import { Link } from 'react-router-dom' 
+ import ChevronRight from '/chevron-right.svg'
 
 const Featured = ({post}) => {
     if (!post || !Array.isArray(post.body)) {
@@ -22,30 +23,43 @@ const Featured = ({post}) => {
 
       const date = formatDate(post.publishedAt);
   return (
-    <div className='featured lg:w-8/12 xl:w-8/12 2xl:w-8/12 md:w-8/12 sm:w-full w-full mx-auto'>
-        <h2 className='capitalise lg:xl:2xl:mb-10 lg:xl:2xl:text-4xl text-3xl mb-5'> Featured Post</h2>
-        <div className="postContainer p-2 rounded flex flex-col gap-4 border-2 border-[#ccc]  
-            lg:p-5 md:p-5 xl:p-10 2xl:p-10 
+    <div className='featured lg:w-8/12 xl:w-7/12 2xl:w-7/12 md:w-7/12 sm:w-full w-full mx-auto   flex flex-col
+      sm:max-w-lg
+      md:max-w-3xl   
+      lg:max-w-2xl  lg:gap-8
+      xl:max-w-2xl   xl:gap-8
+      2xl:max-w-3xl 2xl:gap-8
+    '>
+        <h2 className='capitalise  lg:xl:2xl:text-4xl text-3xl   font-bold'> Featured Post</h2>
+        <div className="postContainer p-2   flex flex-col justify-start items-start  gap-6 border border-gray-200  
+             md:p-5  2xl:p-10  md:h-[630px]
+            lg:h-[725px] lg:p-8 lg:gap-6
+            xl:h-[725px] xl:p-8 xl:gap-6
+            2xl:h-[725px] 2xl:gap-6
         ">
-            <img src={post.mainImage.asset.url} className='rounded featured-image max-h-[400px] w-full' alt="" />
-            <div className="text-content my-7 flex flex-col gap-3 items-start">
-                <div className='text-left font-bold text-gray-500'>By <span className='text-purple-500'>{post.author.name} </span> | <span> {date}</span></div>
+            <img src={post.mainImage.asset.url} className='sm:h-72 md:max-h-80 lg:h-[352px] xl:h-[352px] m-0 2xl:h-[352px]  w-full  object-cover' alt="" />
+            <div className='text-left text-sm font-medium text-gray-500'>By <span className='text-purple-500'>
+                    <Link to={`/author/${post.author._id}`}  >{post.author.name} </Link> </span> | <span> {date}</span>
+            </div>
+            <div className="text-content gap-4 flex flex-col items-start">
                 <h2 className='font-bold text-black
-                    text-2xl 2xl:text-4xl xl:text-4xl
-                 lg:text-3xl md:text-2xl'> {post.title}</h2>
-                <p className='text-gray-500'>
+                    text-2xl  '>  {post.title.split(' ').slice(0, 18).join(' ')}{post.title.split(' ').length > 18 && '...'}
+                </h2>
+                <p className='text-[#6D6E76] xl:max-w-2xl lg:max-w-2xl md:max-w-2xl sm:max-w-lg max-w-96'>
                     {text.split(' ').slice(0, 20).join(' ')}{text.split(' ').length > 20 && '...'}
                 </p>
                 
+            </div>
                 <button className='mt-3'>
                     <Link to='/blogs'
-                        className="py-2 px-6 
-                            rounded shadow text-black bg-yellow-400 border-yellow-300 hover:bg-transparent border-2  transition-all duration-500 hover:text-black font-bold" 
+                        className="md:py-3 md:px-8  lg:py-4 lg:px-9 xl:py-4 xl:px-9 2xl:py-4 2xl:px-9
+                        rounded shadow text-black bg-[#FFD050] border-[#FFD050] hover:bg-transparent border-2  transition-all duration-500 hover:text-black font-bold
+                        flex items-center justify-center gap-2  " 
                     >
                         Read More
+                        <img src={ChevronRight} alt="" />
                     </Link>
                 </button>
-            </div>
         </div>
     </div>
   )

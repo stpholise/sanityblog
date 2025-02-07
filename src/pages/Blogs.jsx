@@ -5,6 +5,7 @@ import JoinTeam from '../components/JoinTeam';
 import Catagory from '../components/Catagory';
 import  { useFetchPosts, useFetchCategories } from '../hooks/index'
 import Icon from '../components/Icon';
+import FetchError from '../components/FetchError';
 
 const Blogs = () => {
    
@@ -14,21 +15,29 @@ const Blogs = () => {
  
  
   if (loading) return  <Icon />
-  if (error) return <div> {error} </div>
+  if (error) return  <FetchError/>
+  
   return (
-    <div>  
+    <div className='bg-white'>  
           {
             posts.length > 0 &&  
             
             <BlogsFeatured  post={posts[0]} />
           }
-        <section className="px-5 2xl:max-w-7xl 2xl:mx-auto">
+        <section className="px-5 2xl:max-w-7xl 2xl:mx-auto
+        container mx-auto flex flex-col ap-20 items-center justify-start py-20 text-left bg-white
+            sm:px-4
+            md:px-6
+            lg:px-8
+           ">
           
 
-          <section className="all-posts">
-            <h1 className='lg:xl:2xl:py-5 lg:xl:2xl:my-5 lg:xl:2xl:text-3xl text-xl my-2 py-2 font-bold'>All posts</h1>
-            <div className='border-b-2 border-gray-200 lg:xl:2xl:my-5 my-2'></div>
-            <section className="flex flex-col items-center justify-center ">
+          <section className="container mx auto all-posts">
+            <div className="title flex flex-col items-start justify-start gap-8"> 
+              <h1 className=' container mx-auto text-left lg:py-5  lg:text-4xl text-xl  font-bold'>All posts</h1>
+              <hr className=' w-full bg-[#6D6E76]' />
+            </div>
+            <section className="flex flex-col items-left justify-start lg:gap-16 lg:py-16  ">
               {
                 posts.length > 0 &&  
                 posts.slice(0,5).map((post) => (
@@ -37,12 +46,22 @@ const Blogs = () => {
                 
               }
             </section>
-
+            <div className="container mx-auto flex justify-center items-center gap-5   w-40 ">
+                <button className='mx-auto'>
+                 Prev </button>
+                <button className='mx-auto'>
+                  Next </button>
+            </div>
           </section>
 
              <section className="category-section container w-full mx-auto my-10 mb-10"> 
                 <h1 className='capitalize mb-5 font-bold lg:text-3xl xl:text-3xl 2xl:text-4xl text-2xl text-center'>All category</h1>
-                <div className="category-flex lg:xl:flex-nowrap 2xl:flex-nowrap flex flex-wrap  justify-center items-start gap-5">
+                <div className="category-flex  flex flex-wrap  justify-center items-strech gap-5
+                   md:flex-wrap md:gap-2 md:px-2 md:text-4xl md:grid md:grid-cols-2
+                lg:grid lg:grid-cols-4 lg:gap-8  lg:text-4xl
+                xl:text-4xl xl:w-full  xl:grid xl:grid-cols-4
+                2xl:grid 2xl:grid-col-4 2xl:w-full  2xl:text-4xl  2xl:gap-6
+                ">
                     {
                         categories.slice(0,4).map((category, index) => (
                             <Catagory key={index} category={category} />
