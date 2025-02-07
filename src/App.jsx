@@ -15,13 +15,14 @@ import Categories from './pages/Categories'
 import Author from './pages/Author'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Error from './pages/Error'
+import Contact from './pages/Contact'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-    <div  >
+    <div className='bg-white' >
       <Header />
       <Routes> 
         <Route exact 
@@ -55,6 +56,10 @@ function App() {
         <Route exact 
           path='/privacypolicy'
           element={<PrivacyPolicy />}
+        />
+        <Route exact 
+          path='/contact'
+          element={<Contact />}
         />
           <Route exact 
           path='*'
