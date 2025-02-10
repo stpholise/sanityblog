@@ -33,11 +33,11 @@ const Blogs = () => {
           
 
           <section className="container mx auto all-posts">
-            <div className="title flex flex-col items-start justify-start gap-8"> 
-              <h1 className=' container mx-auto text-left lg:py-5  lg:text-4xl text-xl  font-bold'>All posts</h1>
+            <div className="title flex flex-col items-start justify-start gap-4 lg:gap-8"> 
+              <h1 className=' container mx-auto text-left lg:py-5  lg:text-4xl text-2xl  font-bold'>All posts</h1>
               <hr className=' w-full bg-[#6D6E76]' />
             </div>
-            <section className="flex flex-col items-left justify-start lg:gap-16 lg:py-16  ">
+            <section className="flex flex-col items-left justify-start py-3 lg:gap-16 lg:py-16  ">
               {
                 posts.length > 0 &&  
                 posts.slice(0,5).map((post) => (
