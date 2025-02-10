@@ -21,7 +21,7 @@ const EmblaCarouselEx = () => {
     
   return (
     <div  className="embla container mx-auto  h-20 w-full flex items-center justify-center  " ref={emblaRef}>
-        <div className="embla__container flex w-full h-16 items-center gap-8 lg:gap-16">
+        <div className="embla__container flex w-full h-16 items-center gap-6 lg:gap-16">
         <div className="embla__slide flex-shrink-0 ml-12">
           <img src={Logo1} alt="Logo 1"  className='object-cover'/>
         </div>

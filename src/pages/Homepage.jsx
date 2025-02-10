@@ -138,7 +138,7 @@ const { categories } = useFetchCategories()
                 </div>
 
                 <div className="mission w-full  lg:w-[516px] xl:w-[516px] p-2  ">
-                    <h3 className="font-bold text-1 mt-5 mb-4 lg:mb-7 tracking-widest text-gray-700  text-2xl  ">Our mision</h3>
+                    <h3 className="font-bold text-1 mt-5 mb-4 ]]]]]]lg:mb-7 tracking-widest text-gray-700  text-2xl  ">Our mision</h3>
                     <h1 className=" lg:xl:2xl:text-4xl font-bold  lg:text-4xl md:text-2xl text-xl">Creating valuable content for creatives all around the world</h1>
                     <p className='my-3 text-[#6D6E76]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     
@@ -267,7 +267,7 @@ const { categories } = useFetchCategories()
                     <p className=' text-gray-600 my-2 md:text-sm'> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero itaque vel autem. Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
                 <div className=" w-full h-full  py-2 my-3 md:my-0 border-gray-200 
-                flex flex-col gap-3 px-8 
+                flex flex-col gap-3 px-4 
                 md:px-4 md:border-l-2 md:border-t-0 md:w-7/12
                 lg:w-8/12 lg:px-16 lg:border-l-2 lg:flex  lg:flex-col lg:gap-10 lg:py-0
                 xl:px-20 xl:w-8/12  xl:border-l-2  "> 
@@ -275,18 +275,18 @@ const { categories } = useFetchCategories()
                    <p className='lg:text-2xl md:text-xl 2xl:text-2xl text-base font-bold flex flex-col gap-6 min-h-24 md:min-h-36'> {tesitmonials[currentIndex]?.text}</p>
 
                     <div className="user flex flex-row justify-between items-center xl:2xl:gap-5 ">
-                        <div className=" flex flex-row gap-5">
+                        <div className=" flex flex-row gap-2 md:gap-5">
                             <img src={bgImg} alt="" className='rounded-full h-12 w-12 ' />
                             <div className="">
-                                <h3 className='md:lg:xl:2xl:3xl text-base font-medium'>{tesitmonials[currentIndex]?.name}</h3>
+                                <h3 className='md:text-xl text-base font-medium'>{tesitmonials[currentIndex]?.name}</h3>
                                 <h6>{tesitmonials[currentIndex]?.location}</h6>
                             </div>
                         </div>
                         <div className=" flex gap-5">
-                            <button className='bg-white  h-14 w-14 rounded-full'>
+                            <button className='bg-white w-10 h-10  sm:h-14 sm:w-14 rounded-full'>
                                 <img src={ArrowLeft} alt="" onClick={() => setCurrentIndex(currentIndex - 1)}/>
                             </button>
-                            <button  className='bg-white  h-14 w-14 rounded-full' onClick={() => setCurrentIndex(currentIndex + 1)}>
+                            <button  className='bg-white w-10 h-10  sm:h-14 sm:w-14 rounded-full' onClick={() => setCurrentIndex(currentIndex + 1)}>
                                 <img src={ArrowRight} alt="" />
                             </button>
                         </div>
