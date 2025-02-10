@@ -10,7 +10,8 @@ const Catagory = ({category}) => {
   return (
  <>
     <Link to={`/categories/${_id}`} className='' >  
-      <div className='catagory group hover:bg-[#FFD050] w-full  flex flex-col justify-start items-start gap-2 border-2 border-gray-200 
+      <div className='catagory group hover:bg-[#FFD050] w-full  p-4 
+          flex flex-col justify-start items-start gap-2 border-2 border-gray-200 
               transition-colors duration-300 ease-in-out
                 md:p-8 md:rounded md:hover:bg-yellow-200 
                 lg:max-w-[300px] lg:h-[218px] lg:p-8  

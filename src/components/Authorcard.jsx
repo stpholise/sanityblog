@@ -11,7 +11,7 @@ const Authorcard = ({author}) => {
   const { name, _id,  image,  } = author
   return (
     <div className='author bg-gray-200 xl:2xl:p-5 p-2 min-h-40 h-80  flex flex-col items-center justify-center gap-3 xl:2xl:w-1/5 w-full
-           hover:bg-[#FBF6EA]   md:w-full md:p-5  md:hover:bg-[#FBF6EA] sm:w-1/2 sm:p-5 
+           hover:bg-[#FBF6EA]   md:w-full md:p-5  md:hover:bg-[#FBF6EA]  sm:p-5 
             transition-all duration-300 ease-in-out
             lg:w-full lg:p-10 lg:gap-3
             xl:w-full 
