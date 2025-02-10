@@ -17,7 +17,7 @@ const PostCard = ({post}) => {
       const text = post.body.map(block => block.children && Array.isArray(block.children) ?  block.children.map(child => child.text || '').join(''): '').join('\n'); 
 
       const date = formatDate(post.publishedAt);
-  return (
+  return ( 
     <>
         <div key={post._id} className="post__card flex flex-col justify-start items-start lg:gap-8 lg:w-80 xl:w-96">
                             <img src={post.mainImage.asset.url} alt="" className='w-full h-80 object-cover' />

@@ -24,18 +24,16 @@ const Featured = ({post}) => {
       const date = formatDate(post.publishedAt);
   return (
     <div className='featured lg:w-8/12 xl:w-7/12 2xl:w-7/12 md:w-7/12 sm:w-full w-full mx-auto   flex flex-col
+      gap-6
       sm:max-w-lg
       md:max-w-3xl   
-      lg:max-w-2xl  lg:gap-8
-      xl:max-w-2xl   xl:gap-8
-      2xl:max-w-3xl 2xl:gap-8
+      lg:max-w-2xl  lg:gap-8 
     '>
-        <h2 className='capitalise  lg:xl:2xl:text-4xl text-3xl   font-bold'> Featured Post</h2>
-        <div className="postContainer p-2   flex flex-col justify-start items-start  gap-6 border border-gray-200  
+        <h2 className='capitalise  lg:text-4xl text-3xl text-center  md:text-left font-bold'> Featured Post</h2>
+        <div className="postContainer p-3  flex flex-col justify-start items-start  gap-4 border border-gray-200  
              md:p-5  2xl:p-10  md:h-[630px]
             lg:h-[725px] lg:p-8 lg:gap-6
-            xl:h-[725px] xl:p-8 xl:gap-6
-            2xl:h-[725px] 2xl:gap-6
+            
         ">
             <img src={post.mainImage.asset.url} className='sm:h-72 md:max-h-80 lg:h-[352px] xl:h-[352px] m-0 2xl:h-[352px]  w-full  object-cover' alt="" />
             <div className='text-left text-sm font-medium text-gray-500'>By <span className='text-purple-500'>
@@ -50,9 +48,9 @@ const Featured = ({post}) => {
                 </p>
                 
             </div>
-                <button className='mt-3'>
+                <button className='md:mt-3 mt-2'>
                     <Link to='/blogs'
-                        className="md:py-3 md:px-8  lg:py-4 lg:px-9 xl:py-4 xl:px-9 2xl:py-4 2xl:px-9
+                        className="py-2 px-7 md:py-3 md:px-8  lg:py-4 lg:px-9 xl:py-4 xl:px-9 2xl:py-4 2xl:px-9
                         rounded shadow text-black bg-[#FFD050] border-[#FFD050] hover:bg-transparent border-2  transition-all duration-500 hover:text-black font-bold
                         flex items-center justify-center gap-2  " 
                     >

@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     < >
-        <header className='flex item-center justify-between bg-[#232536] text-white  p-3 z-20 xl:px-10'>
+        <header className='flex  flex-row  item-center sticky top-0 md:static justify-between bg-[rgba(0,0,0,0.8)] md:bg-[#232536] text-white    px-8 py-3 lg:py-3 z-50 lg:px-10'>
             <div className="logo flex items-center">
                 <Link to='/'>
                     <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:2xl:4xl">
@@ -51,9 +51,9 @@ const Header = () => {
           
                
                <nav>
-                <ul className={`headerNav md:flex items-center lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row gap-5 flex-col  ${showMenu ? 'absolute top-16 left-0 right-0  z-40 bg-black p-3 text-left py-7 animate__animated animate__bounceInDown animate__faster' : 'hidden'}`}>
+                <ul className={`headerNav md:flex items-center lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row gap-5 flex-col  ${showMenu ? 'absolute top-14 left-0 right-0 flex-col justify-center items-center  z-40 bg-[#232536] p-3 text-left py-7 animate__animated animate__bounceInDown animate__faster' : 'hidden'}`}>
                     {navitems.map((item, index) => (
-                        <li key={index} className="lg:text-base text-base 2xl:ml-4 text-[#D9D9D9]  ">
+                        <li key={index} className="lg:text-base text-base 2xl:ml-4 text-[#D9D9D9] sm:max-w-96 sm:mx-auto">
                             <button className='w-full md:w-fit lg:w-fit xl:w-fit 2xl:w-fit p-2'>
                                 <Link to={item.link} className='nav'> {item.title}</Link>
                             </button>

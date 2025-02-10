@@ -105,7 +105,12 @@ h5 {
   font-weight:bold;
   font-size:18px;
 }
- 
+ @media( max-width: 768px ) {
+  ul.headerNav li:last-child {
+   max-width: 384px;
+   margin:0 auto;
+  }
+ }
 
 .blog__content{
   font-family: "Inter", serif;  
