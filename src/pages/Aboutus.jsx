@@ -8,25 +8,23 @@ import JoinTeam from '../components/JoinTeam'
  import Bg2 from '../assets/bg/pexels-liza-summer-6348123.jpg'
 
 const Aboutus = () => { 
-    const { authors, error, loading } = useFetchAuthors()
-    
-  
+    const { authors, error, loading } = useFetchAuthors() 
     if (loading) return  <Icon />
     if(error) return <h1>{error}</h1>
 
   return (
-    <div className='container mx-auto px-4  bg-white continer   py-4  flex flex-col gap-14
+    <div className='container mx-auto px-4  bg-white continer  py-4  flex flex-col gap-14
             lg:px-8 lg:gap-28 lg:py-20   '>
             <section>
                 <div className="flex relative  w-full 
                 flex-col  container mx-auto  
                 lg:h-72 lg:flex-row lg:gap-6 
               "> 
-                    <div className="bg-white  static w-full px-4 z-30 
+                    <div className="bg-white  static w-full px-2 z-30 
                         lg:w-[625px] lg:h-[356px]  lg:absolute lg:left-24 lg:top:8 lg:p-16
                         ">
                         <h1 className='uppercase font-bold text-lg tracking-wide lg:xl:2xl:mb-10 leading-6   text-left '>About Us</h1>
-                        <h2 className='lg:text-5xl font-bold lg:leading-[64px] text-2xl'>We are a team of content writers who share their learnings</h2>
+                        <h2 className='lg:text-5xl font-bold lg:leading-[64px] text-3xl'>We are a team of content writers who share their learnings</h2>
                     </div>
                     <p className="static bottom-10   w-full lg:top-10  z-30 h-fit 
                         lg:w-[477px] lg:absolute right-0 lg:h-32 text-[#6D6E76]
@@ -41,7 +39,7 @@ const Aboutus = () => {
                     lg:w-full lg:h-[444px] lg:block
                    " />
 
-                    <div className="lg:absolute bg-[#FFD050] flex flex-row justify-center gap-2 lg:gap-5  items-center w-full md:w-[630px]  lg:p-5  z-30 bottom-6   lg:left-24">
+                    <div className="lg:absolute mb-6 bg-[#FFD050] flex flex-row justify-center gap-2 lg:gap-5  items-center w-full md:w-[630px]  lg:p-5  z-30 bottom-6   lg:left-24">
                         <div className="lg:p-5   p-2">
                             <h2 className='font-bold lg:text-4xl   text-xl text-center'>12+</h2>
                             <p className='text-sm text-center lg:text-left'>Blogs Published</p>

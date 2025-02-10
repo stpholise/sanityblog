@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     < >
-        <header className='flex  flex-row  item-center sticky top-0 md:static justify-between bg-[#252637e6] md:bg-[#232536] text-white    px-8 py-4 lg:py-3 z-50 lg:px-10'>
+        <header className='flex  flex-row  item-center sticky top-0 md:static justify-between bg-[#232536] md:bg-[#232536] text-white    px-8 py-4 lg:py-3 z-50 lg:px-10'>
             <div className="logo flex items-center">
                 <Link to='/'>
                     <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:2xl:4xl">

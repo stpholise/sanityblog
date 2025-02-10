@@ -1,12 +1,17 @@
  import { Formik, ErrorMessage, Form, Field } from 'formik'
  import * as Yup from 'yup';
  import Select from 'react-select'; 
- import { useState } from 'react';
+ import { useState, useEffect } from 'react';
+ 
 
 const Contact = () => {
 
     const [selectedOption, setSelectedOption] = useState(null)
 
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    useEffect(() => { 
+        setWindowWidth(window.innerWidth)    
+    }, [ ])
     const options = [
         { value: 'generalInquiry', label: 'General Inquiry' },
         { value: 'feedback', label: 'Article Feedback' },
@@ -46,13 +51,13 @@ const Contact = () => {
 
   return (
     <div className='container mx-auto flex flex-col lg:justify-center gap-20 lg:px-8 py-20'>
-        <section className='lg:w-[770px] mx-auto flex flex-col items-center justify-center  lg:gap-8  text-center'>
+        <section className='lg:w-[770px] mx-auto flex flex-col w-full px-4 items-center justify-center  lg:gap-8  text-center'>
             <h3 className='uppercase  text-base font-black'>Contact us</h3>
-            <h2 className='font-bold text-5xl'>Let’s Start a Conversation</h2>
-            <p className='text-[#6D6E7]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+            <h2 className='font-bold text-3xl lg:text-5xl'>Let’s Start a Conversation</h2>
+            <p className='text-[#6D6E7] text-sm text-center  lg:text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
         </section>
         <section>
-            <div className="bg-[#592EA9] lg:w-[770px] mx-auto flex gap-10 px-16 py-12">
+            <div className="bg-[#592EA9] lg:w-[770px] mx-auto flex flex-col md:flex-row gap-10 px-16 py-12">
                 <div className=" w-full flex flex-col gap-3">
                     <p className='text-sm text-gray-400'>Working hours</p>
                     <div className='border-b border-gray-500 ' > </div>
@@ -73,13 +78,13 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                      >
                 { (formik) => (
-                    <Form className='lg:w-[770px] mx-auto flex flex-col gap-4 py-10'>
+                    <Form className='lg:w-[770px] w-full px-4 mx-auto flex flex-col gap-4 py-10'>
                         <div className="w-full">
-                            <Field type="text" name="firstname" placeholder="Name" className='lg:p-6 border border-gray-300 w-full outline-none' />
+                            <Field type="text" name="firstname" placeholder="Name" className='p-2 lg:p-6 border border-gray-300 w-full outline-none' />
                             <ErrorMessage name="firstname" component="div" className='text-red-600 text-sm' />
                                                                     </div>
                             <div className=" ">
-                                <Field type="email" name="email" placeholder="Email"  className='lg:p-6 border border-gray-300 w-full outline-none'  />
+                                <Field type="email" name="email" placeholder="Email"  className='p-2 lg:p-6 border border-gray-300 w-full outline-none'  />
                                                     <ErrorMessage name="email" component="div" className='text-red-600 text-sm' />
                         </div>
                         <div className=" ">
@@ -101,7 +106,7 @@ const Contact = () => {
                                 outline: 'none',
                                 boxShadow: 'none',
                                 width: '100%',
-                                padding: '1rem',
+                                padding: `${windowWidth < 700 ? '0.25rem': '1rem'}`,
                                 borderRadius: '0px',
                                 ':focus': {
                                 borderColor: '#ccc', // Keep the red border even on focus
@@ -125,10 +130,10 @@ const Contact = () => {
                             <ErrorMessage name="subject" component="div" className='text-red-600 text-sm mt-2' />
                         </div>
                         <div className=" ">
-                            <Field  as="textarea"  rows="4"  cols="50" name="message" placeholder="Message"  className='lg:p-6 border border-gray-300 w-full outline-none'  />
+                            <Field  as="textarea"  rows="4"  cols="50" name="message" placeholder="Message"  className='p-2 lg:p-6 border border-gray-300 w-full outline-none'  />
                             <ErrorMessage name="message" component="div" className='text-red-600 text-sm mt-2' />
-                        </div>
-                        <button type="submit" className='lg:p-4 border border-gray-300 bg-[#FFD050] font-bold text-2xl'>Send Message</button>
+                        </div> 
+                        <button type="submit" className='p-2 lg:p-4 border border-gray-300 bg-[#FFD050] font-bold text-2xl'>Send Message</button>
                     </Form>)
                 }
             </Formik>
