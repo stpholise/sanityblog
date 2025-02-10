@@ -46,46 +46,46 @@ const BlogPost = () => {
      
         {
             post.author &&
-            <div className=" container mx-auto flex flex-row justify-start items-center  lg:gap-7 p-2
-                lg:flex-col lg:w-[768px]   
+            <div className=" container mx-auto flex flex-col-reverse gap-4 justify-start items-center   p-2
+                lg:flex-col lg:w-[768px]   lg:gap-7 
             "> 
                 <div className="author   w-full flex flex-row justify-start items-center gap-2 ">
-                    <div className="author__image   h-14 w-14 rounded-full overflow-hidden border border-gray-500 flex itmes-center justify-center">
+                    <div className="author__image h-10 w-10   md:h-14 md:w-14 rounded-full overflow-hidden border border-gray-500 flex itmes-center justify-center">
                         <img src={post.author.image.asset.url} alt="author" className='w-full h-full object-contain rounded-full'/>
                     </div>
-                    <div className="author__details flex flex-col ">
-                        <h1 className='text-2xl lg:text-3xl capitalize font-bold text-[#592EA9]'>{post.author.name}</h1>
+                    <div className="author__details flex flex-col  ">
+                        <h1 className='md:text-2xl text-xl lg:text-3xl capitalize font-bold text-[#592EA9]'>{post.author.name}</h1>
                         <p className=" text-[#6D6E76]">published on {formatDate(post.publishedAt)}</p>
                     </div>
                 </div> 
-                <h1 className='lg:text-5xl  text-3xl font-bold '>{post.title}</h1> 
+                <h1 className='lg:text-5xl text-2xl  md:text-3xl font-bold '>{post.title}</h1> 
                 <div className="container mx-auto ">
                     {post.category && post.category.map((category) => (
                         <Link to={`/categories/${category._id}`} key={category._id} className=' capitalize flex items-center justify-start gap-3 text-black p-1 px-2 rounded-md'>
                             
-                            <img src={EconomyIcon} alt=""className=' w-6 m-0' /> 
+                            <img src={EconomyIcon} alt=""className=' w-4 md:w-6 m-0' /> 
                             
-                            <p className='font-bold text-xl'>        {category.title}       </p>
+                            <p className='font-bold text-base md:text-xl'>        {category.title}       </p>
                         </Link>
                     ))}
                 </div>
             </div>
         }
-        <div className='container mx-auto bg-white lg:h-[585px]  overflow-hidden  '>
+        <div className='container mx-auto bg-white h-96 lg:h-[585px]  overflow-hidden p-2  '>
             <img src={post.mainImage.asset.url} alt="" className='container mx-auto   w-full object-cover object-left-top h-full  ' />
         </div>
 
 
-        <section className='container mx-auto  blog__content max-w-4xl '>
+        <section className='container mx-auto  blog__content max-w-4xl p-2 '>
             <BlockContent
                 blocks={post.body}
                 projectId='1rx8k2g1'
                 dataset='production'
             />
         </section> 
-        <div className="secti flex flex-col justify-start items-start lg:gap-16 lg:py-10">
+        <div className="secti flex flex-col gap-4 justify-start items-start lg:gap-16 lg:py-10">
             <h2>What to read next</h2>
-            <div className="container mx-auto flex flex-row justify-start items-center gap-5 lg:grid-cols-3 lg:gap-8 ">
+            <div className="container mx-auto flex flex-col justify-start items-center gap-5 lg:grid-cols-3 lg:gap-8 ">
                             
                 {    (posts && posts.length > 0) &&              
                 posts.slice(0,3).map((post) =>

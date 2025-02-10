@@ -219,7 +219,7 @@ const { categories } = useFetchCategories()
                 xl:gap-8
                 2xl:gap-8
              "> 
-                <h1 className='capitalize lg:xl:2xl:my-5 my-3 font-bold md:my-3 sm:my-2 text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl'>List of Authors</h1>
+                <h1 className='capitalize px-4 sm:px-0 lg:xl:2xl:my-5 my-3 font-bold md:my-3 sm:my-2 text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl'>List of Authors</h1>
                 <div className="category-flex flex flex-wrap justify-between items-start gap-6 w-full  px-2  
                     sm:grid sm:grid-cols-2 sm:justify-center
                     md:grid md:grid-cols-2 md:justify-center   
@@ -240,8 +240,7 @@ const { categories } = useFetchCategories()
 {/* =============================================================================================== */} 
              <section className='container mx-auto my-10 featured-slide flex  text-[#6D6E76] px-2
                 flex-col justify-center items-center gap-2
-                lg:md:flex-row lg:justify-evenly lg:gap-x-20
-             '> 
+                lg:md:flex-row lg:justify-evenly lg:gap-x-20   '> 
                     <div className="flex justify-center lg:w-32 items-center gap-2 lg:flex-col lg:items-start lg:text-left lg:gap-0">
                         <p className='text-sm font-normal'>we are</p>
                         <h3 className='font-bold text-lg text-[#6D6E76]'>Featured in</h3>

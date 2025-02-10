@@ -19,8 +19,8 @@ const Author = () => {
   return (
     <div> 
         <section className="full bg-[#eee6f6] lg:min-h-[400px] ">
-            <div className="container mx-auto  py-20 px-8 flex items-center lg:gap-8 lg:max-w-5xl ">
-                <img src={author.image.asset.url} alt="" className="w-64   object-cover"/>
+            <div className="container mx-auto  py-10 lg:py-20 px-4 lg:px-8 flex flex-col lg:flex-row  items-center lg:gap-8 lg:max-w-5xl ">
+                <img src={author.image.asset.url} alt="" className="lg:w-64 w-full h-64 mid:h-auto   object-cover"/>
                 <div className="W-10/12 flex flex-col items-start justify-center lg:gap-6">
                     <h2 className="font-bold lg:text-5xl my-2"> <span className='capitalize'>{author.name} </span>  </h2>
                     <p className="text-[#6D6E76] my-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec. Scelerisque viverra mauris in aliquam sem. At risus viverra adipiscing at in tellus.</p>

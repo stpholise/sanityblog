@@ -8,7 +8,7 @@ const Post = ({post}) => {
   const text = post.body.map(block => block.children && Array.isArray(block.children) ?  block.children.map(child => child.text || '').join(''): '').join('\n'); 
 
   return (
-    <div className='flex lg:flex-row border-2 border-gray-200 rounded-md  lg:border-0 xl:border-0 justify-start 2xl:border-0 md:flex-row xl:flex-row  lg:gap-8  my-3  flex-col max-w-[1146px] '>
+    <div className='flex  flex-col lg:flex-row border border-gray-200 gap-4  p-4 md:p-0 lg:border-0 justify-start  md:flex-row xl:flex-row  lg:gap-8  my-3  max-w-[1146px] '>
         <div className='md:w-60 sm:w-full w-full lg:w-[490px]  overflow-hidden '>
           <img src={post.mainImage.asset.url} alt="" className='lg:h-56   xl:w-96 2xl:w-96 xl:h-72 2xl:h-72 lg:ml-0 xl:ml-0 2xl:ml-0 h-48 lg:w-[490px]  object-left-cener  w-full object-cover'/>
         </div>
@@ -22,7 +22,7 @@ const Post = ({post}) => {
            <Link to={`/blogs/${post.slug.current}`} >
             <h2 className='lg:text-4xl font-bold text-xl capitalize'>{post.title}</h2>
             </Link>
-            <p className='text-[#6D6E76]    '>                    {text.split(' ').slice(0, 20).join(' ')}{text.split(' ').length > 20 && '...'}
+            <p className='text-[#6D6E76]    '> {text.split(' ').slice(0, 20).join(' ')}{text.split(' ').length > 20 && '...'}
             </p>
           
         </div>
