@@ -49,7 +49,7 @@ const Header = () => {
                 </Link>
             </div> 
                <nav>
-                <ul className={`headerNav md:flex items-center lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row gap-5 flex-col  ${showMenu ? 'absolute top-14 left-0 right-0 flex-col justify-center items-center  z-40 bg-[#232536] p-3 text-left py-7 animate__animated animate__backInRight animate__fast' : `' absolute animate__animated animate__backOutLeft  animate__slow	 `}`}>
+                <ul className={`headerNav md:flex items-center lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row gap-5 flex-col  ${showMenu ? 'fixed top-14 left-0 right-0 flex-col justify-center items-center  z-40 bg-[#232536] p-3 text-left py-7 animate__animated animate__backInRight animate__slow' : `' absolute top-14 bg-[#232536] p-3 text-left py-7 animate__animated animate__fadeOutLeft  animate__slow	left-0 right-0  `}`}>
                     {navitems.map((item, index) => (
                         <li key={index} className="lg:text-base text-base 2xl:ml-4 text-[#D9D9D9] sm:max-w-96 sm:mx-auto">
                             <button className='w-full md:w-fit lg:w-fit xl:w-fit 2xl:w-fit p-2'>
