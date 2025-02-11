@@ -3,25 +3,25 @@ import BlogsFeatured from '../components/blogs/BlogsFeatured';
 import Post from '../components/blogs/Post'; 
 import JoinTeam from '../components/JoinTeam';
 import Catagory from '../components/Catagory';
-import  { useFetchPosts, useFetchCategories } from '../hooks/index'
-import Icon from '../components/Icon';
+import  { useFetchPosts, useFetchCategories } from '../hooks/index' 
 import FetchError from '../components/FetchError';
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Blogs = () => {
    
   const { posts, loading, error } = useFetchPosts()
-  const { categories } = useFetchCategories() 
+  const { categories, loading: loadingCategories } = useFetchCategories() 
 
  
- 
-  if (loading) return  <Icon />
+  
   if (error) return  <FetchError/>
   
   return (
     <div className='bg-white'>  
           {
-            posts.length > 0 &&  
-            
+            loading ? <Skeleton count={1} height={500} /> :
             <BlogsFeatured  post={posts[0]} />
           }
         <section className="px-5 2xl:max-w-7xl 2xl:mx-auto
@@ -39,7 +39,7 @@ const Blogs = () => {
             </div>
             <section className="flex flex-col items-left justify-start py-3 lg:gap-16 lg:py-16  ">
               {
-                posts.length > 0 &&  
+                loading ? <Skeleton count={5} height={500} /> :
                 posts.slice(0,5).map((post) => (
                   <Post key={post.slug.current} post={post} /> 
                 ))
@@ -62,7 +62,7 @@ const Blogs = () => {
                 xl:text-4xl xl:w-full  xl:grid xl:grid-cols-4
                 2xl:grid 2xl:grid-col-4 2xl:w-full  2xl:text-4xl  2xl:gap-6
                 ">
-                    {
+                    {loadingCategories ? <Skeleton count={4} height={300} /> :
                         categories.slice(0,4).map((category, index) => (
                             <Catagory key={index} category={category} />
                         ))

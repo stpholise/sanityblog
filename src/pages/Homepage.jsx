@@ -15,20 +15,23 @@ import EmblaCarouselEx from '../components/EmblaCarouselEx'
 
 import ChevronRight from '/chevron-right.svg'
 import { useFetchCategories, useFetchAuthors} from '../hooks/index'
-import Icon from '../components/Icon'
+ 
 
  
 import { useEffect, useState } from 'react'
 
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const Homepage = () => {
  
     const [currentIndex, setCurrentIndex] = useState(0)
 
-const { categories } = useFetchCategories() 
+const { categories, loading: loadingCategories } = useFetchCategories() 
     const { posts, loading, error } = useFetchPosts()
-    const { authors } = useFetchAuthors() 
+    const { authors, loading: loadingAuthors,  } = useFetchAuthors() 
 
 
 
@@ -67,16 +70,15 @@ const { categories } = useFetchCategories()
         if (currentIndex > tesitmonials.length -1) {
             setCurrentIndex(0)
         }
-    }, [currentIndex])
+    }, [currentIndex, tesitmonials.length])
 
    
-    if (loading) return  <Icon />
+    
     
     if (error) return <h1>{error}</h1> 
   return (
-    <div  className="flex flex-col  items-center justify-start bg-white text-left" >
-          
-            <Hero  post={posts[0]} />
+    <div  className="flex flex-col  items-center justify-start bg-white text-left" > 
+        {  loading ? <Skeleton /> :  <Hero  post={posts[0]} />}
         <section className="flex flex-col container mx-auto   items-center justify-start bg-white 
             gap-14
             md:gap-20 
@@ -91,20 +93,17 @@ const { categories } = useFetchCategories()
             2xl:px-8
         ">
 
-
-            <main className='container mx-auto  flex gap-10   
-                flex-col lg:justify-center 
-                md:gap-6 md:flex-row md:w-full md:h-[812px]   md:container-none
-                lg:w-full  lg:items-start lg:mx-auto  lg:h-[820px] lg:gap-8 lg:flex-row
-                xl:w-full xl:items-start  xl:h-[820px] xl:flex-row  xl:justify-center  xl:gap-8
-                2xl:w-full 2xl:items-start 2xl:h-[820px]   2xl:flex-row 2xl:gap-8 
-                
-               '
-                >
-                  <Featured post={posts[1]} />
-                  <AllPostAside  posts={posts}/>
-             </main>
-             
+            {loading ? <Skeleton count={1} height={100} width={100} /> :
+                <main className='container mx-auto  flex gap-10   
+                    flex-col lg:justify-center 
+                    md:gap-6 md:flex-row md:w-full md:h-[812px]   md:container-none
+                    lg:w-full  lg:items-start lg:mx-auto  lg:h-[820px] lg:gap-8 lg:flex-row
+                    xl:w-full xl:items-start  xl:h-[820px] xl:flex-row  xl:justify-center  xl:gap-8
+                    2xl:w-full 2xl:items-start 2xl:h-[820px]   2xl:flex-row 2xl:gap-8 '>
+                    <Featured post={posts[1]} />
+                    <AllPostAside  posts={posts}/>
+                </main>
+            }
 {/* ==============================ABOUT US========================================================= */}
 {/* =============================================================================================== */}
 {/* =============================================================================================== */}
@@ -116,7 +115,6 @@ const { categories } = useFetchCategories()
                 <div className="h-6 w-3/12 bg-[#592EA9] "></div>
                 </div>
              <section className='w-full about-section mx-auto gap-4 px-4 items-center justify-centre     flex   flex-col bg-[#F4F0F8]
-                
                 md:flex-row md:py-16
                 lg:flex-row lg:py-16   lg:px-16  lg:gap-12 lg:h-[500px]  
                 xl:flex-row  xl:gap-12 xl:h-[500px] xl:justify-center xl:items-center 
@@ -155,7 +153,7 @@ const { categories } = useFetchCategories()
                 lg:gap-12 xl:gap-12 2xl:gap-12
                "> 
                 <h1 className='capitalize font-bold text-center   text-3xl'>choose a category</h1>
-                <div className="  grid gap-4   
+              { loadingCategories ? <Skeleton /> : <div className="  grid gap-4   
                 justify-center    items-strech  
                 md:gap-6 md:px-2 md:text-4xl md:grid md:grid-cols-2
                 lg:grid lg:grid-cols-4 lg:gap-8  lg:text-4xl
@@ -167,7 +165,7 @@ const { categories } = useFetchCategories()
                             <Catagory key={index} category={category} />
                         ))
                     }
-                </div>                
+                </div>      }          
              </section>
 
 
@@ -220,7 +218,7 @@ const { categories } = useFetchCategories()
                 2xl:gap-8
              "> 
                 <h1 className='capitalize px-4 sm:px-0 lg:xl:2xl:my-5 my-3 font-bold md:my-3 sm:my-2 text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl'>List of Authors</h1>
-                <div className="category-flex flex flex-wrap justify-between items-start gap-6 w-full  px-2  
+             { loadingAuthors ? <Skeleton /> :   <div className="category-flex flex flex-wrap justify-between items-start gap-6 w-full  px-2  
                     sm:grid sm:grid-cols-2 sm:justify-center
                     md:grid md:grid-cols-2 md:justify-center   
                     lg:grid lg:grid-cols-4 lg:gap-10 lg:justify-center
@@ -231,7 +229,7 @@ const { categories } = useFetchCategories()
                             <Author key={index} author={author} />
                         ))
                     }
-                </div>                
+                </div>      }          
              </section>
 
 {/* ==============================LIST OF SPONSORS================================================== */}

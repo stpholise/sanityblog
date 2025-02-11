@@ -2,14 +2,17 @@
  import image from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
  import Authorcard from '../components/Authorcard'
 import JoinTeam from '../components/JoinTeam'
- import { useFetchAuthors } from '../hooks/index'
- import Icon from '../components/Icon'
+ import { useFetchAuthors } from '../hooks/index' 
  import Bg1 from '../assets/bg/pexels-anna-shvets-5029919.jpg'
  import Bg2 from '../assets/bg/pexels-liza-summer-6348123.jpg'
 
+
+ import Skeleton from 'react-loading-skeleton'
+ import 'react-loading-skeleton/dist/skeleton.css'
+
 const Aboutus = () => { 
     const { authors, error, loading } = useFetchAuthors() 
-    if (loading) return  <Icon />
+    
     if(error) return <h1>{error}</h1>
 
   return (
@@ -39,7 +42,7 @@ const Aboutus = () => {
                     lg:w-full lg:h-[444px] lg:block
                    " />
 
-                    <div className="lg:absolute mb-6 bg-[#FFD050] flex flex-row justify-center gap-2 lg:gap-5  items-center w-full md:w-[630px]  lg:p-5  z-30 bottom-6   lg:left-24">
+                    <div className="lg:absolute mb-6 md:mb-0 bg-[#FFD050] flex flex-row justify-center gap-2 lg:gap-5  items-center w-full md:w-[630px]  lg:p-5  z-30 bottom-6   lg:left-24">
                         <div className="lg:p-5   p-2">
                             <h2 className='font-bold lg:text-4xl   text-xl text-center'>12+</h2>
                             <p className='text-sm text-center lg:text-left'>Blogs Published</p>
@@ -117,7 +120,7 @@ const Aboutus = () => {
                     lg:grid lg:grid-cols-4 lg:gap-5 lg:justify-center
                     xl:grid xl:grid-cols-4 xl:gap-10 xl:justify-center
                     2xl:grid 2xl:grid-cols-4 2xl:px-16 2xl:gap-10 2xl:justify-center">
-                        {
+                        { loading ? <Skeleton count={8} height={300} /> :
                             authors.slice(0,8).map((author, index) => (
                                 <Authorcard key={index} author={author} />
                             ))
