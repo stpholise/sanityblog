@@ -71,8 +71,8 @@ const BlogPost = () => {
             </div>
         }
         <div className='container mx-auto bg-white h-96 lg:h-[585px]  overflow-hidden p-2  '>
-            <img src={post.mainImage.asset.url} alt="" className='container mx-auto   w-full object-cover object-left-top h-full  ' />
-        </div>
+          { loading ? <Skeleton count={1} /> :  <img src={post.mainImage.asset.url} alt="" className='container mx-auto   w-full object-cover object-left-top h-full  ' />
+       } </div>
 
 
         <section className='container mx-auto  blog__content max-w-4xl p-2 '>
