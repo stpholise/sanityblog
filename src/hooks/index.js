@@ -334,12 +334,15 @@ export const useFetchPostsByAuthor = (id) => {
                 if(!response.ok) {
                     setError(`${response.status} ${response.message}`)
                     console.log(response)
+                    setLoading(false)
                 }
                 const data = await response.json()
                 setPosts(data.result)
+                setLoading(false)
             }
             catch(err) {
                 setError(err)
+                setLoading(false)
             }
         }
         if(id) {
@@ -523,12 +526,15 @@ export const useFetchCategories = () => {
                 }`, settings)
                 if(!response.ok) {
                     setError(response.message)
+                    setLoading(false)
                 }
                 const data = await response.json()
                 setCategories(data.result)
+                setLoading(false)
             }
             catch(err) {
                 setError(err)
+                setLoading(false)
             }
         }
         getCategories()

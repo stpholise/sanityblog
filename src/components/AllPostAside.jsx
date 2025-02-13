@@ -1,6 +1,7 @@
  import { Link } from 'react-router-dom'
  import { PropTypes } from 'prop-types'
-// import { useFormatDate } from '../hooks/useFormatDate'
+
+
 
 const AllPostAside = ({posts}) => {
     const formatDate = (dateString) => {
@@ -13,8 +14,8 @@ const AllPostAside = ({posts}) => {
         return new Intl.DateTimeFormat('en-GB', options).format(date);
       };
       
+  
 
-    //   const date = formatDate(post.publishedAt);
     
   return (
     <aside className="md:w-5/12 lg:xl:2xl:w-2/5 w-full max-w-lg h-full pb-9">
@@ -44,8 +45,9 @@ const AllPostAside = ({posts}) => {
                     transition-all duration-300 
                     lg:p-5 md:p-3
                     flex flex-col items-start justify-center
-                    w-full
-                '>
+                    w-full  '
+                 
+                    >
                     <div className='text-left font-medium font-[inter] text-gray-500 text-sm  mb-3'>By <span className='text-[#592EA9] '>
                     <Link to={`/author/${post.author._id}`}  > {post.author.name}</Link> </span> | <span> {date}</span></div>
                     <Link to={`/blogs/${post.slug.current}`}> 

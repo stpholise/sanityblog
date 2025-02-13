@@ -1,11 +1,11 @@
  
  import BlockContent from '@sanity/block-content-to-react'
  import  { useFetchBySlug, useFetchPostsByAuthor } from '../hooks/index'
- import { Link, useParams } from 'react-router-dom'
- import Icon from '../components/Icon'
+ import { Link, useParams } from 'react-router-dom' 
  import EconomyIcon from '/economy.svg'
  import { useState , useEffect } from 'react'
  import PostCard from '../components/blogs/PostCard'
+import Skeleton from 'react-loading-skeleton'
 
 
 const BlogPost = () => {
@@ -19,7 +19,7 @@ const BlogPost = () => {
             setAuthorId(post.author._id)
         }
     }, [post])
-    const { posts } = useFetchPostsByAuthor(authorId)
+    const { posts, loading : loadingPosts } = useFetchPostsByAuthor(authorId)
  
     console.log(posts)
     const formatDate = (dateString) => {
@@ -30,9 +30,8 @@ const BlogPost = () => {
           year: 'numeric',
         }; 
         return new Intl.DateTimeFormat('en-GB', options).format(date);
-      }; 
-      if(loading) return <Icon />
-      else if (error) return <h1>{error}</h1>
+      };  
+      if (error) return <h1>{error}</h1>
       
 
    
@@ -45,7 +44,7 @@ const BlogPost = () => {
 
      
         {
-            post.author &&
+           loading ? <h1>Loading...</h1> :
             <div className=" container mx-auto flex flex-col-reverse gap-4 justify-start items-center   p-2
                 lg:flex-col lg:w-[768px]   lg:gap-7 
             "> 
@@ -72,22 +71,23 @@ const BlogPost = () => {
             </div>
         }
         <div className='container mx-auto bg-white h-96 lg:h-[585px]  overflow-hidden p-2  '>
-            <img src={post.mainImage.asset.url} alt="" className='container mx-auto   w-full object-cover object-left-top h-full  ' />
-        </div>
+          { loading ? <Skeleton count={1} /> :  <img src={post.mainImage.asset.url} alt="" className='container mx-auto   w-full object-cover object-left-top h-full  ' />
+       } </div>
 
 
         <section className='container mx-auto  blog__content max-w-4xl p-2 '>
+           { loading ? <Skeleton count={5} height={500} /> :
             <BlockContent
                 blocks={post.body}
                 projectId='1rx8k2g1'
                 dataset='production'
-            />
+            />}
         </section> 
         <div className="secti flex flex-col gap-4 justify-start items-start lg:gap-16 lg:py-10">
             <h2>What to read next</h2>
             <div className="container mx-auto flex flex-col justify-start items-center gap-5 lg:grid-cols-3 lg:gap-8 ">
                             
-                {    (posts && posts.length > 0) &&              
+                { loadingPosts ? <Skeleton count={3} /> :   (posts && posts.length > 0) &&              
                 posts.slice(0,3).map((post) =>
                     (
                     <PostCard key={post._id} post={post} />
