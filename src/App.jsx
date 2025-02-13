@@ -1,13 +1,10 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header'
 import Homepage from './pages/Homepage'
-import BlogPost from './pages/BlogPost'
-// import SinglePost from './pages/SinglePost'
+import BlogPost from './pages/BlogPost' 
 import Blogs from './pages/Blogs'
 import Footer from './components/Footer' 
 import Aboutus from './pages/Aboutus'
@@ -16,6 +13,8 @@ import Author from './pages/Author'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Error from './pages/Error'
 import Contact from './pages/Contact'
+
+ 
 
 function App() {
   // const [count, setCount] = useState(0)

@@ -7,15 +7,30 @@ import LinkedIn from '/LinkedIn.svg'
  import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+import { useEffect } from 'react' 
+
 const Authorcard = ({author}) => {
+
   const { name, _id,  image,  } = author
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false  })
+  })
+
   return (
     <div className='author bg-gray-200 xl:2xl:p-5 p-2 min-h-40 h-80  flex flex-col items-center justify-center gap-3 xl:2xl:w-1/5 w-full
            hover:bg-[#FBF6EA]   md:w-full md:p-5  md:hover:bg-[#FBF6EA]  sm:p-5 
             transition-all duration-300 ease-in-out
             lg:w-full lg:p-10 lg:gap-3
-            xl:w-full 
-    '> 
+            xl:w-full  '
+            data-aos='flip-right'
+            data-aos-anchor-placement="top-bottom"
+            data-aos-delay="100"
+            data-aos-once="false" 
+            data-aos-mirror="true"
+            > 
       <Link to={`/author/${_id}`} className=' flex flex-col items-center justify-center gap-2'>
     
         <img src={image.asset.url}alt="" className='rounded-full w-32  h-32 object-cover ' /> 
