@@ -7,6 +7,11 @@
  import Skeleton from 'react-loading-skeleton'
  import 'react-loading-skeleton/dist/skeleton.css'
 
+ import AOS from 'aos'
+import 'aos/dist/aos.css';
+
+import { useEffect } from 'react'
+
 const Categories = () => { 
     const { id } = useParams()
 
@@ -16,6 +21,10 @@ const Categories = () => {
     const { categories } = useFetchCategories()
 
     
+   // Initialize AOS animations
+   useEffect(() => {
+     AOS.init({ duration: 1000, once: true });
+   }, []);
  
 
     if(error) return <h1>{error}</h1> 
@@ -53,8 +62,14 @@ const Categories = () => {
                              categories.slice(0,).filter((category) => category._id != id ).map((category, index) => (
                                  <Link key={index} to={`/categories/${category._id}`} >
                                  <div  className='flex   justify-start items-center border-2 border-gray-300 w-full text-left p-3 gap-4 lg:h-24 lg:w-[300px] lg:p-6
-                                 hover:bg-yellow-300 transition-color duration-300 cursor-pointer 
-                                 '>
+                                 hover:bg-yellow-300 transition-color duration-300 cursor-pointer      '
+                                 data-aos='fade-left'
+                                 data-aos-anchor-placement="top-bottom"
+                                 data-aos-delay="100"
+                                 data-aos-once="false" 
+                                  data-aos-mirror="true"
+                                  data-aos-easing="ease-in-out"
+                                 >
                                      <img src={image} alt="" className=' w-10 h-10 object-cover  rounded-md' />
                                     <h3 className='text-purple-600 w-10/12 text-base lg:text-lg text-left font-bold uppercase'>{category.title}</h3>
                                  </div>

@@ -138,7 +138,8 @@ export const useFetchBySlug = (slug) => {
           }`, settings) 
                 if (!response.ok) {
                     console.log(response)
-                    setError(`Error ${response.status} ${response.statusText} ${response?.message}`)
+                    console.log(`Error ${response.status} ${response.statusText} ${response?.message}`)
+                    setError(response.message)
                     setLoading(false) 
                 }
                 const data = await response.json()
@@ -194,7 +195,8 @@ export const useFetchAuthors = () => {
                         slug, 
                         }`, settings) 
                     if(!response.ok) {
-                    setError(`Error ${response.status} ${response?.message}`)
+                    console.log(`Error ${response.status} ${response?.message}`)
+                    setError(response.message)
                     setLoading(false)
                 }
                 const data = await response.json() 
@@ -265,7 +267,7 @@ export const useFetchAuthor = (id) => {
 
             }
             catch(err) {
-                setError(err)
+                setError(err.message)
                 setLoading(false)
 
             }
@@ -332,7 +334,8 @@ export const useFetchPostsByAuthor = (id) => {
   } 
 }`, settings)
                 if(!response.ok) {
-                    setError(`${response.status} ${response.message}`)
+                    // setError(`${response.status} ${response.message}`)
+                    setError(response.message)
                     console.log(response)
                     setLoading(false)
                 }
@@ -341,7 +344,7 @@ export const useFetchPostsByAuthor = (id) => {
                 setLoading(false)
             }
             catch(err) {
-                setError(err)
+                setError(err.message)
                 setLoading(false)
             }
         }
@@ -399,7 +402,7 @@ export const useFetchSingleCategory = (id) => {
                 setLoading(false)
             }
             catch(err) {
-                setError(err)
+                setError(err.message)
                 setLoading(false)
             }
         }
@@ -533,7 +536,7 @@ export const useFetchCategories = () => {
                 setLoading(false)
             }
             catch(err) {
-                setError(err)
+                setError(err.message)
                 setLoading(false)
             }
         }

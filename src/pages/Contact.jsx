@@ -50,7 +50,7 @@ const Contact = () => {
     }
 
   return (
-    <div className='container mx-auto flex flex-col lg:justify-center gap-20 lg:px-8 py-20'>
+    <div className='container mx-auto flex flex-col lg:justify-center px-4 gap-20 lg:px-8 py-20'>
         <section className='lg:w-[770px] mx-auto flex flex-col w-full px-4 items-center justify-center  lg:gap-8  text-center'>
             <h3 className='uppercase  text-base font-black'>Contact us</h3>
             <h2 className='font-bold text-3xl lg:text-5xl'>Let’s Start a Conversation</h2>

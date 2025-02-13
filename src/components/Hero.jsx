@@ -2,8 +2,7 @@
  import { Link } from 'react-router-dom'
  import { PropTypes } from 'prop-types'
  import '../styles/hero.css'
- import ChevronRight from '/chevron-right.svg'
-
+ import ChevronRight from '/chevron-right.svg' 
 const Hero = ({post}) => {
 
     if (!post) return (
@@ -51,7 +50,7 @@ const Hero = ({post}) => {
             <div className='text-left font-medium text-base'> POSTED ON <h5 className='font-bold inline uppercase'>{post.category[0].title}</h5></div>
 }
 
-            <h1 className=' md:text-4xl lg:text-5xl text-2xl sm:text-3xl font-bold text-left max-w-4xl  '>{post.title}</h1>
+            <h1 className=' md:text-4xl lg:text-5xl text-2xl sm:text-3xl font-bold text-left max-w-4xl  '> {post.title}   </h1>
            
 
             <div className='text-left'>By <h5 className='font-bold inline capitalize text-[#FFD050]'>{post.author.name} </h5> |

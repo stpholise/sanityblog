@@ -1,40 +1,45 @@
- 
+ "use client";
+
+import { ErrorBoundary, ErrorBoundaryContext } from "react-error-boundary";
  
  import { useFetchPosts } from '../hooks/index'
  import Hero from '../components/Hero' 
-import Featured from '../components/Featured'
-import AllPostAside from '../components/AllPostAside'
-import { Link } from 'react-router-dom' 
-import Catagory from '../components/Catagory'
-import Author from '../components/Authorcard'
-import bgImg from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
-import JoinTeam from '../components/JoinTeam'
-import ArrowLeft from '../assets/icons/arrowleft.svg'
-import ArrowRight from '../assets/icons/arrowright.svg'
-import EmblaCarouselEx from '../components/EmblaCarouselEx'
+ import Featured from '../components/Featured'
+ import AllPostAside from '../components/AllPostAside'
+ import { Link } from 'react-router-dom' 
+ import Catagory from '../components/Catagory'
+ import Author from '../components/Authorcard'
+ import bgImg from '../assets/bg/close-up-photography-of-man-wearing-sunglasses-1212984.svg'
+ import JoinTeam from '../components/JoinTeam'
+ import ArrowLeft from '../assets/icons/arrowleft.svg'
+ import ArrowRight from '../assets/icons/arrowright.svg'
+ import EmblaCarouselEx from '../components/EmblaCarouselEx'
 
 import ChevronRight from '/chevron-right.svg'
 import { useFetchCategories, useFetchAuthors} from '../hooks/index'
  
-
- 
 import { useEffect, useState } from 'react'
-
-
+ 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
-
-const Homepage = () => {
  
-    const [currentIndex, setCurrentIndex] = useState(0)
+const Homepage = () => { 
+    const [currentIndex, setCurrentIndex] = useState(0) 
 
-const { categories, loading: loadingCategories } = useFetchCategories() 
+    const { categories, loading: loadingCategories, error: categoriesError } = useFetchCategories() 
     const { posts, loading, error } = useFetchPosts()
-    const { authors, loading: loadingAuthors,  } = useFetchAuthors() 
+    const { authors, loading: loadingAuthors, authorsError } = useFetchAuthors() 
 
 
-
+    const ErrorFallback = ({ error, resetErrorBoundary }) => {
+        return (
+            <div role="alert">
+              <p>Something went wrong: {error.message}</p>
+              <button onClick={resetErrorBoundary}>Try again</button>
+            </div>
+          );
+    }
+  
     const tesitmonials = [
         {
             id: 1,
@@ -74,11 +79,10 @@ const { categories, loading: loadingCategories } = useFetchCategories()
 
    
     
-    
-    if (error) return <h1>{error}</h1> 
+     
   return (
     <div  className="flex flex-col  items-center justify-start bg-white text-left" > 
-        {  loading ? <Skeleton /> :  <Hero  post={posts[0]} />}
+        {  loading ? <Skeleton /> : error ? <div> {error} </div> :  <Hero  post={posts[0]} />}
         <section className="flex flex-col container mx-auto   items-center justify-start bg-white 
             gap-14
             md:gap-20 
@@ -93,7 +97,8 @@ const { categories, loading: loadingCategories } = useFetchCategories()
             2xl:px-8
         ">
 
-            {loading ? <Skeleton count={1} height={100} width={100} /> :
+            {loading ? <Skeleton count={1} height={100} width={100} /> : error ? <div>  <ErrorBoundary        FallbackComponent={ErrorFallback}        onReset={resetErrorBoundary} // Optional callback to reset error
+      /> </div> :
                 <main className='container mx-auto  flex gap-10   
                     flex-col lg:justify-center 
                     md:gap-6 md:flex-row md:w-full md:h-[812px]   md:container-none
@@ -152,13 +157,12 @@ const { categories, loading: loadingCategories } = useFetchCategories()
                 flex-col items-center justify-center gap-6
                 lg:gap-12 xl:gap-12 2xl:gap-12
                "> 
-                <h1 className='capitalize font-bold text-center   text-3xl'>choose a category</h1>
-              { loadingCategories ? <Skeleton /> : <div className="  grid gap-4   
-                justify-center    items-strech  
+                <h1 className='capitalize font-bold text-center  text-3xl'  >choose a category</h1>
+              { loadingCategories ? <Skeleton  count={1} height={100} width={100} /> : categoriesError ? <div> {categoriesError} </div> :
+               <div className="  grid gap-4   
+                justify-center    items-strech    w-full  
                 md:gap-6 md:px-2 md:text-4xl md:grid md:grid-cols-2
-                lg:grid lg:grid-cols-4 lg:gap-8  lg:text-4xl
-                xl:text-4xl xl:w-full xl:gap-8  xl:grid xl:grid-cols-4
-              
+                lg:grid lg:grid-cols-4 lg:gap-8  lg:text-4xl 
                 ">
                     {
                         categories.slice(0,4).map((category, index) => (
@@ -218,7 +222,7 @@ const { categories, loading: loadingCategories } = useFetchCategories()
                 2xl:gap-8
              "> 
                 <h1 className='capitalize px-4 sm:px-0 lg:xl:2xl:my-5 my-3 font-bold md:my-3 sm:my-2 text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl'>List of Authors</h1>
-             { loadingAuthors ? <Skeleton /> :   <div className="category-flex flex flex-wrap justify-between items-start gap-6 w-full  px-2  
+             { loadingAuthors ?  <Skeleton  count={1} height={100} width={100} />  :  authorsError ? <div>{authorsError}</div> : <div className="category-flex flex flex-wrap justify-between items-start gap-6 w-full  px-2  
                     sm:grid sm:grid-cols-2 sm:justify-center
                     md:grid md:grid-cols-2 md:justify-center   
                     lg:grid lg:grid-cols-4 lg:gap-10 lg:justify-center
